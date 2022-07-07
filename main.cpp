@@ -69,6 +69,7 @@ int displayMenu()
 {
     int opt;
     
+    cout << endl;
     cout << "Enter an option, 1 - 5 below." << endl;
     cout << "1. Display Linked List" << endl;
     cout << "2. Add a Student" << endl;
@@ -86,13 +87,13 @@ void addStudent(student *&r)
     float gpa, credits;
     student *n;
     
-    cout << "Enter first name";
+    cout << "Enter first name: ";
     cin >> fn;
-    cout << "Enter last name";
+    cout << "Enter last name: ";
     cin >> ln;
-    cout << "Enter GPA";
+    cout << "Enter GPA: ";
     cin >> gpa;
-    cout << "Enter number of credits";
+    cout << "Enter number of credits: ";
     cin >> credits;
     
     n = new student;
@@ -121,18 +122,32 @@ void deleteStudent(student *&h, student *&r)
     h = h->nxt_ptr;
     delete c;
 }
-void searchStudent(string sName, student *h)
+void searchStudent(student *h, student *r)
 {
+    string sName;
     student *f = NULL;
     
+    cout << endl;
+    cout << "Enter search name:" << endl;
+    cin >> sName;
     
-    if (f == NULL);
+    while (h!= NULL)
+    {
+        if (h->lName() == sName)
+            f = h;
+        h = h->nxt_ptr;
+    }
+    if (f == NULL)
     cout << sName << " not in the queue" << endl;
     
     else
     {
         cout << endl;
-        cout << f->fName
+        cout << f->fName() << endl;
+        cout << f->lName() << endl;
+        cout << f->GPA() << endl;
+        cout << f->credits() << endl;
+        cout << f->standing() << endl << endl;
     }
 }
 int main()
@@ -156,11 +171,7 @@ int main()
     else if (opt == 3)
         deleteStudent(h, r);
     else if (opt == 4)
-    {
-        cout << "Enter search name:" << endl;
-        cin >> sName;
-        searchStudent(sName, *h, *r);
-    }
+        searchStudent(h, r);
        cout << endl;
         
         opt = displayMenu();
