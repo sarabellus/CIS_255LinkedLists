@@ -48,7 +48,7 @@ string student::lName()
 }
 void student::GPA(float gpa)
 {
-    gpa = p_gpa;
+    p_gpa = gpa;
 }
 float student::GPA()
 {
